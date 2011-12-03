@@ -17,6 +17,14 @@
 #   about_triangle_project_2.py
 #
 def triangle(a, b, c):
+	if a <= 0 or b <= 0 or c <= 0:
+		raise TriangleError
+	
+	sorted_sides = sorted([a, b, c])
+	
+	if sorted_sides[0] + sorted_sides[1] <= sorted_sides[2]:
+		raise TriangleError
+	
 	unique_sides = set([a, b, c])
 	num_unique_sides = len(unique_sides)
 	
