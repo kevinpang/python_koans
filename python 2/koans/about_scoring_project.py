@@ -33,8 +33,39 @@ from runner.koan import *
 # Your goal is to write the score method.
 
 def score(dice):
-    # You need to write this method
-    pass
+	if not dice:
+		return 0
+	
+	rolls = [0]*7
+	
+	for d in dice:
+		rolls[d] += 1
+		
+	score = 0
+	
+	score += rolls[1] * 100 # 1000 bonus points, minus the 3 * 100 points for the 1's in the set
+	
+	if rolls[1] >= 3:
+		score += 700
+		
+	if rolls[2] >= 3:
+		score += 200
+		
+	if rolls[3] >= 3:
+		score += 300
+		
+	if rolls[4] >= 3:
+		score += 400
+		
+	score += rolls[5] * 50
+	
+	if rolls[5] >= 3:
+		score += 350 # 500 bonus points, minus the 3 * 50 points for the 5's in the set
+		
+	if rolls[6] >= 3:
+		score += 600
+	
+	return score
 
 class AboutScoringProject(Koan):
     def test_score_of_an_empty_list_is_zero(self):
